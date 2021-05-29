@@ -1,0 +1,71 @@
+%! TeX program = pdflatex
+
+% packages
+\documentclass[11pt]{article}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[left=3cm,top=3cm,right=3cm,bottom=3cm,bindingoffset=0cm]{geometry}
+\usepackage{commath, amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{standalone}
+\usepackage[spanish]{babel}
+\usepackage[shortlabels]{enumitem}
+\usepackage[xcolor, framemethod=TikZ]{mdframed}
+\usepackage{cancel}
+\usepackage{setspace}
+\usepackage{footnote}
+\usepackage{minipage-marginpar}
+\usepackage{dashbox}
+\usepackage{dsfont}
+\usepackage{hyperref}
+
+% settings for some packages
+\setstretch{1}
+% \renewcommand{\baselinestretch}{1.5}
+\mdfsetup{frametitlealignment=\raggedright}
+\mdfdefinestyle{defstyle}{%
+roundcorner=2pt                     ,%
+linecolor=black                     ,%
+frametitlebackgroundcolor=gray!30   ,%
+frametitlerule=true,                ,%
+frametitleaboveskip = 5pt           ,%
+frametitlebelowskip = 5pt           ,%
+frametitle=Definición
+}
+
+% set some display settings
+\allowdisplaybreaks
+
+% new commands and theorems
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\ind}{\perp \!\!\! \perp}
+\renewcommand{\exp}[1]{\operatorname{exp}\left\{#1\right\}}
+\renewcommand{\P}{\mathbb{P}}
+\mdtheorem[style=defstyle]{theorem}{Teorema}
+\mdtheorem[style=defstyle]{definition}{Definición}
+
+\stepcounter{footnote}
+\renewcommand{\thempfootnote}{\arabic{footnote}}
+
+
+
+
+
+
+
+\begin{document}
+\input{intro.tex}
+\input{background.tex}
+\input{results.tex}
+\input{proofs.tex}
+\input{conclusion.tex}
+% \section{Notes}
+% \begin{itemize}
+%     \item Main idea: How relative entropy changes in a finite-state markove chain
+% \end{itemize}
+\end{document}
