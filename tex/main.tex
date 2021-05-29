@@ -1,0 +1,154 @@
+%! TeX program = pdflatex
+
+% packages
+\documentclass[11pt]{article}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[left=3cm,top=3cm,right=3cm,bottom=3cm,bindingoffset=0cm]{geometry}
+\usepackage{commath, amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{standalone}
+\usepackage[spanish]{babel}
+\usepackage[shortlabels]{enumitem}
+\usepackage[xcolor, framemethod=TikZ]{mdframed}
+\usepackage{cancel}
+\usepackage{setspace}
+\usepackage{footnote}
+\usepackage{minipage-marginpar}
+\usepackage{dashbox}
+\usepackage{dsfont}
+\usepackage{hyperref}
+
+% settings for some packages
+\setstretch{1}
+% \renewcommand{\baselinestretch}{1.5}
+\mdfsetup{frametitlealignment=\raggedright}
+\mdfdefinestyle{defstyle}{%
+roundcorner=2pt                     ,%
+linecolor=black                     ,%
+frametitlebackgroundcolor=gray!30   ,%
+frametitlerule=true,                ,%
+frametitleaboveskip = 5pt           ,%
+frametitlebelowskip = 5pt           ,%
+frametitle=Definición
+}
+
+% set some display settings
+\allowdisplaybreaks
+
+% new commands and theorems
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\ind}{\perp \!\!\! \perp}
+\renewcommand{\exp}[1]{\operatorname{exp}\left\{#1\right\}}
+\renewcommand{\P}{\mathbb{P}}
+\mdtheorem[style=defstyle]{theorem}{Teorema}
+\mdtheorem[style=defstyle]{definition}{Definición}
+
+\stepcounter{footnote}
+\renewcommand{\thempfootnote}{\arabic{footnote}}
+
+
+
+
+
+
+
+\begin{document}
+\section{Introducción}
+\noindent \textit{Paper:}
+\begin{center}
+    \textbf{Relative Entropy Under Mappings by Stochastic Matrices} \\
+    Joel E. Cohen, Yoh Iwasa, Gh. Rautu, Mary Beth Ruskai, Eugene Seneta, Gh. Zbaganu
+\end{center}
+\noindent \textit{Relevance}: 
+\begin{itemize}
+    \item Can provide more information on bounding the rates of convergence to equilibrium of ergodic Markov chains and Markov processes 
+\end{itemize}
+\section{Preliminares}
+\begin{itemize}
+    \item give the definitions of the different types of random matricies
+    \begin{itemize}
+        \item positive and nonnegative probability $d$-vectors
+        \item row/column stochastic matrix
+        \item scrambling matrix
+    \end{itemize}
+    \item And I think we need the following definitions to give context for the contraction coefficient
+    \begin{definition*}[2.1 $\to$ Symmetric Relative Entropy]
+        
+    \end{definition*}
+    \begin{definition*}[2.2 $\to$ relative $\phi$-entropy]
+        
+    \end{definition*}
+    \begin{definition*}[2.3]
+        Para cualquier $m \times n$ matriz $A$, el coeficiente de ergodicity de Dobrushin se define
+        \[\alpha(A) = \min_{j, k}\sum_{i = 1}^m \min(a_{ij},a_{ik})\]
+    \end{definition*}
+    The complement $1- \alpha(A)$ is 
+    \[\bar{\alpha}(A) \equiv 1 - \alpha(A) = \frac{1}{2} \max_{j,k}\sum_{i = 1}^m|a_{ij} - a_{ik}|\]
+    and also satisfies
+    \[\bar{\alpha}(A) = \sup \left\{\frac{\norm{A(x-y)}_1}{\norm{x-y}_1}: \text{ $x$ and $y$ are positive $n$-vectors such that } x\neq y, \, \text{y} \, \norm{x}_1 = \norm{y}_1\right\}\]
+    % \begin{definition*}[Relative $\mathbf{g}$-Entropy]
+    %     Sean \[x = (x_1, \dots, x_n) \quad y = (y_1, \dots, y_n)\] dos distribuciones de probabilidad. Se define la \textit{$g$-entropía relativa}
+    % \[H_g(x,y) = \sum_k x_k \, g\!\left(\frac{y_k}{x_k} - 1\right)\]
+    % \end{definition*}
+    \item introduce $g(t) = \phi(1, 1+t)$ as a way to index the contraction coefficients
+\end{itemize}
+
+
+
+\section{Resultados Principales}
+\begin{theorem*}[4.1]
+    $0 \leq \eta_{\phi}(A) \leq \bar{\alpha}(A) \leq 1$
+\end{theorem*}
+\begin{theorem*}[5.4]
+    If $g(w)$ is thrice differentiable in a neighborhood of $0$ and $g^{\prime\prime} (0) > 0$, then $\eta_{w^2}(A) \leq \eta_g(A)$; in particular, $\eta_{w^2}(A) \leq \eta_{\operatorname{log}}(A)$
+\end{theorem*}
+\section{Elementos de las demostraciones}
+\begin{itemize}
+    \item Theorem 4.1
+    \begin{itemize}
+        \item Introduce and explain theorem 3 and the corresponding lemas since theorem 4.1 depends on it
+    \end{itemize}
+    \item Theorem 5.4
+    \begin{itemize}
+        \item define homogeneous function
+        \item the rest seems pretty straight forward
+    \end{itemize}
+\end{itemize}
+\section{Conclusión}
+Relación con el curso
+\begin{itemize}
+    % \item convexity
+    % \begin{itemize}
+    %     \item Contraction coefficient depends on $\phi(1, \cdot)$ being strictly convex on $(0, \infty)$
+    % \end{itemize}
+    \item compare with what we've seen with DPI from $KL$-divergence and mutual information. \\ Briefly, we have
+    % \[H_\phi (Ax,Ay) \leq \bar{\alpha}(A)H_{\phi}(x,y)\]
+    % and
+    \[\eta_{\phi}(A) = \sup \left\{\frac{H_{\phi}(Ax,Ay)}{H_{\phi}(x,y)}: x\in P_n, y\in P_n, x \neq y\right\}\]
+    and also
+    \begin{align*}
+        A \text{ is scrambling } &\iff \eta_{\phi}(A) < 1 \\
+        &\iff H_{\phi}(x,y) < H_{\phi}(Ax,Ay) &&\text{with equality if $A$ is permutation}
+    \end{align*}
+    So 
+    \[X \xrightarrow{A} Y \xrightarrow{A^\prime} Z \implies H_{\phi}(X,Y) < H_{\phi}(X,Z)\]
+    
+    Seems like this connects easily to what we've seen if we define $P_{X|Y} \equiv A$ and $P_{Y|Z} \equiv A^\prime$
+    \item Compare relative $g$-entropy with $f$-divergence
+    \begin{itemize}
+        \item Extend symmetry to $f$-divergence
+        \[J_{\phi}(x,y) = H_{\phi}(x,y) + H_{\phi}(y,x) \longrightarrow J_{f}(x,y) = D_f(x,y) + H_f(y,x)\]
+    \end{itemize}
+\end{itemize}
+
+% \section{Notes}
+% \begin{itemize}
+%     \item Main idea: How relative entropy changes in a finite-state markove chain
+% \end{itemize}
+\end{document}
