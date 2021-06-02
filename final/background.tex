@@ -1,8 +1,8 @@
 \section{Background}
 \subsection*{Preliminary Definitions}
-\noindent\textbf{Definitions 1.1 (Vectors):} Let $m,n,$ and $d$ be finite positive integers. Vectors that are $n \times 1$ or $d \times 1$ will be called $n$ and $d$ vectors respectively. We define 
+\noindent\textbf{Definitions 1.1 (Vectors):} Let $m,n,$ and $d$ be finite positive integers. Vectors that are $n \times 1$ or $d \times 1$ will be called $\mathbf{n}$ and $\mathbf{d}$ vectors respectively. We define 
 \[N_d = \{x \in R^d : x_i \geq 0, \sum_i x_i = 1\} \quad P_d = \{x \in N_d : x_i > 0, \; \forall i\}\]
-\noindent\textbf{Definitions 1.2 (Matrices):} A (column) stochastic $m \times n$ matrix is a matrix whos columns belong to $N_m$. A nonnegative matrix is called row-allowable if each row contains at least one positive element. A matrix with at least one positive row (all elements of a row positive) is called row-positive. A column-stochastic row-positive matrix is called a Markov matrix. A nonnegative $d \times d$ matrix $A$ is claled primitive if $A^k$ is positive for some positive integer $k$. A column-stochastic $m \times n$ matrix is called a scrambling matrix if any submatrix consisting of two columns has a row both elements of which are positive. Note, every row-positive matrix is scrambling, but not conversely.
+\noindent\textbf{Definitions 1.2 (Matrices):} A \textbf{(column) stochastic} $m \times n$ matrix is a matrix whos columns belong to $N_m$. A nonnegative matrix is called \textbf{row-allowable} if each row contains at least one positive element. A matrix with at least one positive row (all elements of a row positive) is called \textbf{row-positive}. A column-stochastic row-positive matrix is called a \textbf{Markov matrix}. A nonnegative $d \times d$ matrix $A$ is called \textbf{primitive} if $A^k$ is positive for some positive integer $k$. A column-stochastic $m \times n$ matrix is called a \textbf{scrambling} matrix if any submatrix consisting of two columns has a row both elements of which are positive. Note, every row-positive matrix is scrambling, but not conversely.
 
 
 \subsection*{Main Definitions}\label{sssec:def2.1}
@@ -19,8 +19,9 @@ Keep in mind that in all cases $H_{\log}$ denotes the relative entropy in \ref{d
 Three main properties of relative entropy:
 \begin{enumerate}
     \item $H_\phi$ is a continuous, real-valued function that is homogeneous, jointly convex in $(x,y)$ for any positive $d$-vectors $x$ and $y$, subadditive, and such that $H_\phi(x,x) = 0$.
-    \item For any $x,y \in P_d, \; H_\phi(x,y) \geq 0$; and if $\phi(1,t)$ is strictly convex for $t \in (0, \infty)$, then $H_\phi(x,y) = 0$ if and only if $x = y$.
+    \item \label{rhp2} For any $x,y \in P_d, \; H_\phi(x,y) \geq 0$; and if $\phi(1,t)$ is strictly convex for $t \in (0, \infty)$, then $H_\phi(x,y) = 0$ if and only if $x = y$.
     \item For any positive $d$-vectors $x,y$ and positive $n$-vectors $x,y$ any permutation matrices $Q_1, Q_2$ of size $m \times m$ and $n \times n$, respectively, and any row-allowable $m\times n$ matrix $A$, there exists positive $n$-vectors $x', y'$ such that \[\frac{H_\phi(Q_1 A Q_2 x, Q_1 A Q_2 y)}{H_\phi(x,y)} = \frac{H_\phi(Ax', Ay')}{H_\phi(x',y')}\]
+    \item If $A$ is a column-stochastic, row-allowable $m \times d$ matrix and $x,y$ are positive $d$-vectors, and $\phi(1, \cdot)$ convex, then $H_\phi(Ax, Ay) \leq H_\phi (x,y)$
 \end{enumerate}
 \noindent\textbf{Definition 2.3 (Dobrushin's Ergodicity Coefficient):} For any $m \times n$ matrix $A$, Dobrushin's coefficient of ergodicity is
 \[\alpha(A) = \min_{j, k}\sum_{i = 1}^m \min(a_{ij},a_{ik})\] 
@@ -28,6 +29,7 @@ We will see that the complement, $1- \alpha(A)$, is a bit more interesting with 
 \[\bar{\alpha}(A) \equiv 1 - \alpha(A) = \frac{1}{2} \max_{j,k}\sum_{i = 1}^m|a_{ij} - a_{ik}|\]
 and also satisfies
 \[\bar{\alpha}(A) = \sup \left\{\frac{\norm{A(x-y)}_1}{\norm{x-y}_1}: \text{ $x$ and $y$ are positive $n$-vectors such that } x\neq y, \, \text{y} \, \norm{x}_1 = \norm{y}_1\right\}\]
+\textbf{Definition 2.4 ($\bm{\phi}$-entropy contraction coefficient):} Let $A$ be a column-stochastic, row-allowable $m \times n$ matrix. We define the \textbf{relative $\bm{\phi}$-enropy contraction coefficient} \[\eta_\phi (A) = \sup \left\{\frac{H_\phi(Ax, Ay)}{H_\phi(x,y)}: x,y \in P_n, x \neq y\right\}\]
 
 
 
