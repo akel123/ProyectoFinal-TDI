@@ -1,21 +1,25 @@
 \section{Principal Results}\label{results}
-\noindent For this section, assume that $\phi(1, \cdot)$ is strictly convex on $(0, \infty)$, $x,y \in P_n$, $x \neq y$.\\
+\textit{For this section, assume that $\phi(1, \cdot)$ is strictly convex on $(0, \infty)$, $x,y \in P_n$, $x \neq y$.}
 \theorem{Let $A$ be a column-stochastic, row-allowable $m \times n$ matrix, and let $x,y \in P_n$. Then \[H_\phi(Ax, Ay) \leq \bar{\alpha}(A)H_\phi(x,y)\]}\label{thm3.1}
+\textbf{Proof Sketch:}
 \stepcounter{section}
 \theorem{$0 \leq \eta_{\phi}(A) \leq \bar{\alpha}(A) \leq 1$}\label{thm4.1}
-\noindent\textbf{Proof:} Given theorem 3.1, it's trivial. Under the assumption of strict convexity of $\phi(1, \cdot)$, by property \ref{prop2} we have that $0 < H_\phi(x, y)$ and as $A$ is a nonnegative matrix, $Ax$ and $Ay$ are nonnegative (possibly equal) $d$-vectors, so $0 \leq H_\phi(Ax, Ay)$. Clearly
+\noindent\textbf{Proof:} Given theorem \ref{thm3.1}, it's fairly trivial. Under the assumption of strict convexity of $\phi(1, \cdot)$, by property \ref{prop2} we have that $0 < H_\phi(x, y)$ and as $A$ is a nonnegative matrix, $Ax$ and $Ay$ are nonnegative (possibly equal) $d$-vectors, so $0 \leq H_\phi(Ax, Ay)$. Clearly
     \[0 \leq H_\phi(Ax, Ay), \; 0<H_\phi(x,y) \implies 0\leq \frac{H_\phi(Ax, Ay)}{H_\phi(x,y)}\]
     From Theorem \ref{thm3.1}, we have
     \[\frac{H_\phi(Ax, Ay) }{H_\phi(x,y)}\leq \bar{\alpha}(A) \implies \sup \left\{\frac{H_\phi(Ax, Ay)}{H_\phi(x,y)}\right\} \leq \bar{\alpha}(A)\]
-$\bar{\alpha}(A) \leq 1$ follows directly from property \label{prop4} of relative entropy. Thus 
+$\bar{\alpha}(A) \leq 1$ follows directly from property \ref{prop4} of relative entropy. Thus 
 \[ 0 \leq \sup \left\{\frac{H_\phi(Ax, Ay)}{H_\phi(x,y)}\right\} \leq \bar{\alpha}(A) \leq 1 \]
-\qed \\
+\qed 
+
+It follows that for all $A$ and for all strictly convex functions $g$, $\eta_g(A) \leq \eta_{|\omega|} = \bar{\alpha}(A)$, where $g_{|\omega|} = |\omega|$ meaning $H_g(x,y) = H(x,y)_{|\omega|} = \sum_i x_i \left|\frac{y_i}{x_i} - 1\right|$
 \stepcounter{section}
 \addtocounter{defc}{3}
 \theorem{
     If $g(w)$ is thrice differentiable in a neighborhood of $0$ and $g^{\prime\prime} (0) > 0$, then $\eta_{w^2}(A) \leq \eta_g(A)$; in particular, $\eta_{w^2}(A) \leq \eta_{\operatorname{log}}(A)$
     }\label{thm5.4}
 \noindent\textbf{Proof:}
+Because $g(\omega) = \omega^2$ is homogeneous of degree two,
 \begin{align}
     \eta_{\omega^2}(A) &= \sup_{\substack{x \neq y \\x,y \in P_n}} \frac{H_{\omega^2}(Ax, Ay)}{H_{\omega^2}(x,y)} \nonumber\\
     &= \sup_{\substack{x \in P_n \\ v^\top 1 = 0}} \frac{H_{\omega^2}(Ax, Ax + Av)}{H_{\omega^2}(x, x + v)} \equiv \sup_{\substack{x \in P_n \\ v^\top 1 = 0}}\frac{\Phi(Ax, Av)}{\Phi(x,v)} \label{helper_thm5.4}
