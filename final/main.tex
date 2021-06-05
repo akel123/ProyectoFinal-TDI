@@ -8,7 +8,7 @@
 \usepackage[left=3cm,top=3cm,right=3cm,bottom=3cm,bindingoffset=0cm]{geometry}
 \usepackage{commath, amsmath,amssymb,amsthm,mathtools,mathrsfs}
 \usepackage{standalone}
-\usepackage[spanish]{babel}
+\usepackage[english]{babel}
 \usepackage[shortlabels]{enumitem}
 \usepackage[xcolor, framemethod=TikZ]{mdframed}
 \usepackage{cancel}
@@ -19,6 +19,9 @@
 \usepackage{dsfont}
 \usepackage{hyperref}
 \usepackage{bm}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+% \usepackage{chngcntr}
 % \usepackage{indentfirst}
 
 % settings for some packages
@@ -37,6 +40,9 @@ frametitle=Definición
 
 % set some display settings
 \allowdisplaybreaks
+\titlespacing{\section}{0em}{\parskip}{-\parskip}
+\titlespacing{\subsection}{0em}{\parskip}{-\parskip}
+\titlespacing{\subsubsection}{0em}{\parskip}{-\parskip}
 
 % new commands and theorems
 \newcommand{\Q}{\mathbb{Q}}
@@ -48,28 +54,44 @@ frametitle=Definición
 \newcommand{\ind}{\perp \!\!\! \perp}
 \renewcommand{\exp}[1]{\operatorname{exp}\left\{#1\right\}}
 \renewcommand{\P}{\mathbb{P}}
+
+
+
+\newcounter{defc}
+\counterwithin{defc}{section}
+\renewcommand{\thedefc}{\thesection.\arabic{defc}}
+
+\newcommand{\definition}[2]% #1 = name, #2 = definition
+{\refstepcounter{defc}%
+\par\noindent \textbf{Definition} $\mathbf{\thedefc}$  \textbf{(#1):} #2\par}
+\newcommand{\theorem}[1]% #1 = name
+{\refstepcounter{defc}%
+\par\noindent \textbf{Theorem} $\mathbf{\thedefc}$\textbf{:} #1\par}
+
 \mdtheorem[style=defstyle]{theorem}{Teorema}
 \mdtheorem[style=defstyle]{definition}{Definición}
 
 \stepcounter{footnote}
 \renewcommand{\thempfootnote}{\arabic{footnote}}
 
-
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.6em}
 
 
 
 
 
 \begin{document}
-
+\setlength{\abovedisplayskip}{1pt}
+\setlength{\belowdisplayskip}{2pt}
 % \hspace{0pt}
 % \vfill
 \begin{center}
     An Elaboration on \\
-    \vspace{0.25in}
+    \vspace{0.1in}
     \textbf{Relative Entropy Under Mappings by Stochastic Matrices} \\
     Joel E. Cohen, Yoh Iwasa, Gh. Rautu, Mary Beth Ruskai, Eugene Seneta, Gh. Zbaganu \\
-    \vspace{0.25in}
+    \vspace{0.1in}
     By Aaron Kelley
 \end{center}
 % \vfill
@@ -78,7 +100,6 @@ frametitle=Definición
 \input{intro.tex}
 \input{background.tex}
 \input{results.tex}
-\input{proofs.tex}
 \input{relation.tex}
 \input{conclusion.tex}
 % \section{Notes}

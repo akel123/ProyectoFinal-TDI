@@ -1,27 +1,36 @@
 \section{Background}
-\subsection*{Preliminary Definitions}
-\noindent\textbf{Definitions 1.1 (Vectors):} Let $m,n,$ and $d$ be finite positive integers. Vectors that are $n \times 1$ or $d \times 1$ will be called $\mathbf{n}$ and $\mathbf{d}$ vectors respectively. We define 
-\[N_d = \{x \in R^d : x_i \geq 0, \sum_i x_i = 1\} \quad P_d = \{x \in N_d : x_i > 0, \; \forall i\}\]
-\noindent\textbf{Definitions 1.2 (Matrices):} A \textbf{(column) stochastic} $m \times n$ matrix is a matrix whos columns belong to $N_m$. A nonnegative matrix is called \textbf{row-allowable} if each row contains at least one positive element. A matrix with at least one positive row (all elements of a row positive) is called \textbf{row-positive}. A column-stochastic row-positive matrix is called a \textbf{Markov matrix}. A nonnegative $d \times d$ matrix $A$ is called \textbf{primitive} if $A^k$ is positive for some positive integer $k$. A column-stochastic $m \times n$ matrix is called a \textbf{scrambling} matrix if any submatrix consisting of two columns has a row both elements of which are positive. Note, every row-positive matrix is scrambling, but not conversely.
+The following definitions are necessary in order to lay the basis for how we will talk about probability vectors and stochastic matrices.
+\addtocounter{section}{-1}
+\definition{Vectors}{
+    Let $m,n,$ and $d$ be finite positive integers. Vectors that are $n \times 1$ or $d \times 1$ will be called $\mathbf{n}$ and $\mathbf{d}$ vectors respectively. $\mathbf{N_d}$ will be the set of probability vectors and $\mathbf{P_d}$ the positive ones. That is,
+    \[N_d = \{x \in R^d : x_i \geq 0, \sum_i x_i = 1\} \qquad P_d = \{x \in N_d : x_i > 0, \; \forall i\}\]
+}
+\definition{Matrices}{
+    A \textbf{(column) stochastic} $d \times n$ matrix is a matrix whos columns belong to $N_d$. A nonnegative matrix is called \textbf{row-allowable} if each row contains at least one positive element. A matrix with at least one positive row (all elements of a row positive) is called \textbf{row-positive}. A column-stochastic row-positive matrix is called a \textbf{Markov matrix}. A nonnegative $d \times d$ matrix $A$ is called \textbf{primitive} if $A^k$ is positive for some positive integer $k$. A column-stochastic $d \times n$ matrix is called a \textbf{scrambling} matrix if any submatrix consisting of two columns has a row both elements of which are positive.
+}
+\stepcounter{section}
+\subsection*{Main Definitions}
+\definition{Symmetric Relative Entropy}{
+    For any two positive $d$-vectors $x = (x_i)$ and $y = (y_i)$ (not necessarily probability vectors), the \textit{relative entropy} is defined as \[H(x,y) = \sum_i x_i \log(x_i/y_i)\]
+    and they \textit{symmetric relative entropy} as 
+    \[J(x,y) = H(x,y) + H(y, x) = \sum_i (x_i - y_i) \log \frac{x_i}{y_i}\]
+}\label{def2.1}
+\definition{relative $\phi$-entropy}{
+    Let $\phi$ be a continuous real-valued function on $(0, \infty) \times (0, \infty)$ that is homogeneous and jointly convex in its arguments, and satisfies $\phi (1,1) = 0$. For any two positive $d$-vectors, $x = (x_i), y=(y_i)$(not necessarily probability vectors) the \textit{relative }$\phi$\textit{-entropy} is defined as
+    \[H_\phi = \sum_i\phi(x_i,y_i)\] and the \textit{symmetric relative $\phi$-entropy} as 
+    \[J_\phi(x,y) = H_\phi(x,y) + H_\phi(y,x)\]
+    Because $\tilde{\phi}(a,b) = \phi(a,b) + \phi(b,a)$ satisfies the conditions of Definition \ref{def2.2} if $\phi$ does, and $J_\phi(x,y) = H_{\tilde{\phi}}(x,y)$, from this point on we will speak of $J_\phi$ as $H_{\tilde{\phi}}$ 
+}\label{def2.2} 
 
-
-\subsection*{Main Definitions}\label{sssec:def2.1}
-\noindent\textbf{Definition 2.1 (Symmetric Relative Entropy):} For any two positive $d$-vectors $x = (x_i)$ and $y = (y_i)$, whether or not $x$ and $y$ are probability vectors, we define the \textit{relative entropy} as \[H(x,y) = \sum_i x_i \log(x_i/y_i)\]
-and they \textit{symmetric relative entropy} as 
-\[J(x,y) = H(x,y) + H(y, x) = \sum_i (x_i - y_i) \log \frac{x_i}{y_i}\]
-\subsection*{}
-\noindent\textbf{Definition 2.2 (relative $\phi$-entropy):}\label{def2.2} Let $\phi$ be a continuous real-valued function on $(0, \infty) \times (0, \infty)$ that is homogeneous and jointly convex in its arguments, and satisfies $\phi (1,1) = 0$. For any two positive $d$-vectors, $x = (x_i), y=(y_i)$, whether or not $x$ and $y$ are probability vectores, we defind the \textit{relative}$\phi$\textit{-entropy} as
-\[H_\phi = \sum_i\phi(x_i,y_i)\] and the \textit{symmetric relative $\phi$-entropy} as 
-\[J_\phi(x,y) = H_\phi(x,y) + H_\phi(y,x)\]
-Because $\tilde{\phi}(a,b) = \phi(a,b) + \phi(b,a)$ satisfies the conditions of \ref{def2.2} if $\phi$ does, and $J_\phi(x,y) = H_{\tilde{\phi}}(x,y)$, from this point on we will speak of $J_\phi$ as $H_{\tilde{\phi}}$ 
-\par The function $\phi$ defined in definition \ref{def2.2} is jointly convex in both arguments if and only if $g(t)\equiv \phi(1,1+t)$ is convex for $t \in (-1, \infty)$. Therefore any continuous real-valued convex function $g(t)$ on $(-1, \infty)$ such that $g(0)=0$ defines a relative $\phi$-entropy via the assumptions that $\phi(1,1+t) = g(t)$ and $\phi$ is homogeneous. So the relative $\phi$-entropy and related quantities can be indexed by both $\phi$ and/or $g$. That's to say \[H_\phi(x,y)=\sum_i\phi(x_i,y_i) \iff H_g(x,y) = \sum_i x_ig(y_i/x_i - 1)\]  
+The function $\phi$ defined in definition \ref{def2.2} is jointly convex in both arguments if and only if $g(t)\equiv \phi(1,1+t)$ is convex for $t \in (-1, \infty)$. Therefore any continuous real-valued convex function $g(t)$ on $(-1, \infty)$ such that $g(0)=0$ defines a relative $\phi$-entropy via the assumptions that $\phi(1,1+t) = g(t)$ and $\phi$ is homogeneous. So the relative $\phi$-entropy and related quantities can be indexed by both $\phi$ and/or $g$. That's to say \[H_\phi(x,y)=\sum_i\phi(x_i,y_i) \iff H_g(x,y) = \sum_i x_ig(y_i/x_i - 1)\]  
 Keep in mind that in all cases $H_{\log}$ denotes the relative entropy in \ref{def2.1}. That is \[H_{\log} = H_g, \quad \text{when } g(t) = -\log(1+t)\] 
-Three main properties of relative entropy:
+Here are a few main properties of relative entropy that will be referenced in the later sections:
 \begin{enumerate}
-    \item $H_\phi$ is a continuous, real-valued function that is homogeneous, jointly convex in $(x,y)$ for any positive $d$-vectors $x$ and $y$, subadditive, and such that $H_\phi(x,x) = 0$.
-    \item \label{rhp2} For any $x,y \in P_d, \; H_\phi(x,y) \geq 0$; and if $\phi(1,t)$ is strictly convex for $t \in (0, \infty)$, then $H_\phi(x,y) = 0$ if and only if $x = y$.
-    \item For any positive $d$-vectors $x,y$ and positive $n$-vectors $x,y$ any permutation matrices $Q_1, Q_2$ of size $m \times m$ and $n \times n$, respectively, and any row-allowable $m\times n$ matrix $A$, there exists positive $n$-vectors $x', y'$ such that \[\frac{H_\phi(Q_1 A Q_2 x, Q_1 A Q_2 y)}{H_\phi(x,y)} = \frac{H_\phi(Ax', Ay')}{H_\phi(x',y')}\]
-    \item If $A$ is a column-stochastic, row-allowable $m \times d$ matrix and $x,y$ are positive $d$-vectors, and $\phi(1, \cdot)$ convex, then $H_\phi(Ax, Ay) \leq H_\phi (x,y)$
+    \itemsep0em
+    \item \label{prop1} $H_\phi$ is a continuous, real-valued function that is homogeneous, jointly convex in $(x,y)$ for any positive $d$-vectors $x$ and $y$, subadditive, and such that $H_\phi(x,x) = 0$.
+    \item \label{prop2} For any $x,y \in P_d, \; H_\phi(x,y) \geq 0$; and if $\phi(1,t)$ is strictly convex for $t \in (0, \infty)$, then $H_\phi(x,y) = 0$ if and only if $x = y$.
+    \item \label{prop3} For any positive $d$-vectors $x,y$ and positive $n$-vectors $x,y$ any permutation matrices $Q_1, Q_2$ of size $m \times m$ and $n \times n$, respectively, and any row-allowable $m\times n$ matrix $A$, there exists positive $n$-vectors $x', y'$ such that \[\frac{H_\phi(Q_1 A Q_2 x, Q_1 A Q_2 y)}{H_\phi(x,y)} = \frac{H_\phi(Ax', Ay')}{H_\phi(x',y')}\]
+    \item  \label{prop4}If $A$ is a column-stochastic, row-allowable $m \times d$ matrix and $x,y$ are positive $d$-vectors, and $\phi(1, \cdot)$ convex, then $H_\phi(Ax, Ay) \leq H_\phi (x,y)$
 \end{enumerate}
 \noindent\textbf{Definition 2.3 (Dobrushin's Ergodicity Coefficient):} For any $m \times n$ matrix $A$, Dobrushin's coefficient of ergodicity is
 \[\alpha(A) = \min_{j, k}\sum_{i = 1}^m \min(a_{ij},a_{ik})\] 

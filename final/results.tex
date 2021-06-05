@@ -1,3 +1,30 @@
-
-
+\section{Principal Results}\label{results}
+\noindent For this section, assume that $\phi(1, \cdot)$ is strictly convex on $(0, \infty)$, $x,y \in P_n$, $x \neq y$.\\
+\theorem{Let $A$ be a column-stochastic, row-allowable $m \times n$ matrix, and let $x,y \in P_n$. Then \[H_\phi(Ax, Ay) \leq \bar{\alpha}(A)H_\phi(x,y)\]}\label{thm3.1}
+\stepcounter{section}
+\theorem{$0 \leq \eta_{\phi}(A) \leq \bar{\alpha}(A) \leq 1$}\label{thm4.1}
+\noindent\textbf{Proof:} Given theorem 3.1, it's trivial. Under the assumption of strict convexity of $\phi(1, \cdot)$, by property \ref{prop2} we have that $0 < H_\phi(x, y)$ and as $A$ is a nonnegative matrix, $Ax$ and $Ay$ are nonnegative (possibly equal) $d$-vectors, so $0 \leq H_\phi(Ax, Ay)$. Clearly
+    \[0 \leq H_\phi(Ax, Ay), \; 0<H_\phi(x,y) \implies 0\leq \frac{H_\phi(Ax, Ay)}{H_\phi(x,y)}\]
+    From Theorem \ref{thm3.1}, we have
+    \[\frac{H_\phi(Ax, Ay) }{H_\phi(x,y)}\leq \bar{\alpha}(A) \implies \sup \left\{\frac{H_\phi(Ax, Ay)}{H_\phi(x,y)}\right\} \leq \bar{\alpha}(A)\]
+$\bar{\alpha}(A) \leq 1$ follows directly from property \label{prop4} of relative entropy. Thus 
+\[ 0 \leq \sup \left\{\frac{H_\phi(Ax, Ay)}{H_\phi(x,y)}\right\} \leq \bar{\alpha}(A) \leq 1 \]
+\qed \\
+\stepcounter{section}
+\addtocounter{defc}{3}
+\theorem{
+    If $g(w)$ is thrice differentiable in a neighborhood of $0$ and $g^{\prime\prime} (0) > 0$, then $\eta_{w^2}(A) \leq \eta_g(A)$; in particular, $\eta_{w^2}(A) \leq \eta_{\operatorname{log}}(A)$
+    }\label{thm5.4}
+\noindent\textbf{Proof:}
+\begin{align}
+    \eta_{\omega^2}(A) &= \sup_{\substack{x \neq y \\x,y \in P_n}} \frac{H_{\omega^2}(Ax, Ay)}{H_{\omega^2}(x,y)} \nonumber\\
+    &= \sup_{\substack{x \in P_n \\ v^\top 1 = 0}} \frac{H_{\omega^2}(Ax, Ax + Av)}{H_{\omega^2}(x, x + v)} \equiv \sup_{\substack{x \in P_n \\ v^\top 1 = 0}}\frac{\Phi(Ax, Av)}{\Phi(x,v)} \label{helper_thm5.4}
+\end{align}
+Where $\Phi(x,v) = H_{\omega^2}(x, x + v) = \sum_j \frac{v_j^2}{x_j}$ and $v \neq 0$. Now we use the fact that $g$ is thrice differentiable to expand it in a Taylor's series about $w = 0$.
+\[\phi(s,t) = sg\left(\frac{t}{s} - 1\right) = (t-s)g^\prime(0) + \frac{(t - s)^2}{s}\frac{g^{\prime\prime}(0)}{2} + \frac{1}{s^2}O\left((t - s)^3\right)\]
+Pick $\epsilon$ sufficiently small and let $y_\epsilon = x + \epsilon v$. Then \[H_g(x, y_\epsilon) = \frac{g^{\prime\prime}(0)}{2}\epsilon^2 \Phi(x,v) + O(\epsilon^3)\] and 
+\[H_g(Ax, Ay_\epsilon) = \frac{g^{\prime\prime}(0)}{2}\epsilon^2 \Phi(Ax,Av) + O(\epsilon^3)\] therefore,
+\[\eta_g(A) \geq \frac{H_g(Ax, Ay_\epsilon)}{H_g(x, y_\epsilon)}=\frac{\Phi(Ax, Av)}{\Phi(x,v)} + O(\epsilon)\]
+Because of equation (\ref{helper_thm5.4}), we can choose $x, v$ and $\epsilon$ such that $\frac{\Phi(Ax, Av)}{\Phi(x,v)} + O(\epsilon)$ is arbitrarily close to $n_{\omega^2}(A)$. It follows that $\eta_{w^2}(A) \leq \eta_g(A)$ \qed
+\addtocounter{section}{-2}
 
